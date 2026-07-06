@@ -10,7 +10,6 @@ export const Route = createFileRoute("/croisieres/gourmande")({
       { name: "description", content: "La croisière-buffet ultime : un chef différent à chaque escale, produits locaux et desserts déjantés." },
       { property: "og:title", content: "Croisière 100% Gourmande" },
       { property: "og:description", content: "Un chef par escale, buffets XXL, zéro gaspillage." },
-      { property: "og:image", content: img },
     ],
   }),
   component: Page,

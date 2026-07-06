@@ -10,7 +10,6 @@ export const Route = createFileRoute("/croisieres/amerique-du-nord")({
       { name: "description", content: "Fjords de l'Alaska, côte Est flamboyante, Grands Lacs : notre grande boucle nord-américaine, en mode éco et gourmand." },
       { property: "og:title", content: "Croisière Amérique du Nord" },
       { property: "og:description", content: "10 escales, 3 saveurs, zéro plastique." },
-      { property: "og:image", content: img },
     ],
   }),
   component: Page,

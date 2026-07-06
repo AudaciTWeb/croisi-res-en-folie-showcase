@@ -10,7 +10,6 @@ export const Route = createFileRoute("/croisieres/inde")({
       { name: "description", content: "Backwaters du Kerala, temples, épices et couchers de soleil : embarquez pour l'Inde authentique et gourmande." },
       { property: "og:title", content: "Croisière Inde" },
       { property: "og:description", content: "12 escales sensorielles, épices et couleurs à volonté." },
-      { property: "og:image", content: img },
     ],
   }),
   component: Page,
