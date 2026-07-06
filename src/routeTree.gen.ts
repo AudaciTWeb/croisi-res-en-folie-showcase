@@ -9,6 +9,7 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SitemapDotxmlRouteImport } from './routes/sitemap[.]xml'
 import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
@@ -16,6 +17,11 @@ import { Route as CroisieresIndeRouteImport } from './routes/croisieres.inde'
 import { Route as CroisieresGourmandeRouteImport } from './routes/croisieres.gourmande'
 import { Route as CroisieresAmeriqueDuNordRouteImport } from './routes/croisieres.amerique-du-nord'
 
+const SitemapDotxmlRoute = SitemapDotxmlRouteImport.update({
+  id: '/sitemap.xml',
+  path: '/sitemap.xml',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const ContactRoute = ContactRouteImport.update({
   id: '/contact',
   path: '/contact',
@@ -52,6 +58,7 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
   '/croisieres/gourmande': typeof CroisieresGourmandeRoute
   '/croisieres/inde': typeof CroisieresIndeRoute
@@ -60,6 +67,7 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
   '/croisieres/gourmande': typeof CroisieresGourmandeRoute
   '/croisieres/inde': typeof CroisieresIndeRoute
@@ -69,6 +77,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/a-propos': typeof AProposRoute
   '/contact': typeof ContactRoute
+  '/sitemap.xml': typeof SitemapDotxmlRoute
   '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
   '/croisieres/gourmande': typeof CroisieresGourmandeRoute
   '/croisieres/inde': typeof CroisieresIndeRoute
@@ -79,6 +88,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/sitemap.xml'
     | '/croisieres/amerique-du-nord'
     | '/croisieres/gourmande'
     | '/croisieres/inde'
@@ -87,6 +97,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/sitemap.xml'
     | '/croisieres/amerique-du-nord'
     | '/croisieres/gourmande'
     | '/croisieres/inde'
@@ -95,6 +106,7 @@ export interface FileRouteTypes {
     | '/'
     | '/a-propos'
     | '/contact'
+    | '/sitemap.xml'
     | '/croisieres/amerique-du-nord'
     | '/croisieres/gourmande'
     | '/croisieres/inde'
@@ -104,6 +116,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   AProposRoute: typeof AProposRoute
   ContactRoute: typeof ContactRoute
+  SitemapDotxmlRoute: typeof SitemapDotxmlRoute
   CroisieresAmeriqueDuNordRoute: typeof CroisieresAmeriqueDuNordRoute
   CroisieresGourmandeRoute: typeof CroisieresGourmandeRoute
   CroisieresIndeRoute: typeof CroisieresIndeRoute
@@ -111,6 +124,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/sitemap.xml': {
+      id: '/sitemap.xml'
+      path: '/sitemap.xml'
+      fullPath: '/sitemap.xml'
+      preLoaderRoute: typeof SitemapDotxmlRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/contact': {
       id: '/contact'
       path: '/contact'
@@ -160,6 +180,7 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   AProposRoute: AProposRoute,
   ContactRoute: ContactRoute,
+  SitemapDotxmlRoute: SitemapDotxmlRoute,
   CroisieresAmeriqueDuNordRoute: CroisieresAmeriqueDuNordRoute,
   CroisieresGourmandeRoute: CroisieresGourmandeRoute,
   CroisieresIndeRoute: CroisieresIndeRoute,
