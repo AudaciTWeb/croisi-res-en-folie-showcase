@@ -12,4 +12,8 @@ export default defineConfig({
     // nitro/vite builds from this
     server: { entry: "server" },
   },
+  // Force nitro to build a fully static site (prerendered HTML + assets, no server runtime).
+  // Output lands in `.output/public/` — deploy that folder to any static host (Netlify, Nginx, S3, GitHub Pages, etc.).
+  // Note: server functions and SSR at request time won't work — everything must be prerenderable.
+  nitro: { preset: "static" },
 });
