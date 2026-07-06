@@ -9,38 +9,122 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as ContactRouteImport } from './routes/contact'
+import { Route as AProposRouteImport } from './routes/a-propos'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as CroisieresIndeRouteImport } from './routes/croisieres.inde'
+import { Route as CroisieresGourmandeRouteImport } from './routes/croisieres.gourmande'
+import { Route as CroisieresAmeriqueDuNordRouteImport } from './routes/croisieres.amerique-du-nord'
 
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AProposRoute = AProposRouteImport.update({
+  id: '/a-propos',
+  path: '/a-propos',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CroisieresIndeRoute = CroisieresIndeRouteImport.update({
+  id: '/croisieres/inde',
+  path: '/croisieres/inde',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CroisieresGourmandeRoute = CroisieresGourmandeRouteImport.update({
+  id: '/croisieres/gourmande',
+  path: '/croisieres/gourmande',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CroisieresAmeriqueDuNordRoute =
+  CroisieresAmeriqueDuNordRouteImport.update({
+    id: '/croisieres/amerique-du-nord',
+    path: '/croisieres/amerique-du-nord',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
+  '/croisieres/gourmande': typeof CroisieresGourmandeRoute
+  '/croisieres/inde': typeof CroisieresIndeRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
+  '/croisieres/gourmande': typeof CroisieresGourmandeRoute
+  '/croisieres/inde': typeof CroisieresIndeRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/a-propos': typeof AProposRoute
+  '/contact': typeof ContactRoute
+  '/croisieres/amerique-du-nord': typeof CroisieresAmeriqueDuNordRoute
+  '/croisieres/gourmande': typeof CroisieresGourmandeRoute
+  '/croisieres/inde': typeof CroisieresIndeRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/croisieres/amerique-du-nord'
+    | '/croisieres/gourmande'
+    | '/croisieres/inde'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/croisieres/amerique-du-nord'
+    | '/croisieres/gourmande'
+    | '/croisieres/inde'
+  id:
+    | '__root__'
+    | '/'
+    | '/a-propos'
+    | '/contact'
+    | '/croisieres/amerique-du-nord'
+    | '/croisieres/gourmande'
+    | '/croisieres/inde'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AProposRoute: typeof AProposRoute
+  ContactRoute: typeof ContactRoute
+  CroisieresAmeriqueDuNordRoute: typeof CroisieresAmeriqueDuNordRoute
+  CroisieresGourmandeRoute: typeof CroisieresGourmandeRoute
+  CroisieresIndeRoute: typeof CroisieresIndeRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/a-propos': {
+      id: '/a-propos'
+      path: '/a-propos'
+      fullPath: '/a-propos'
+      preLoaderRoute: typeof AProposRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,11 +132,37 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/croisieres/inde': {
+      id: '/croisieres/inde'
+      path: '/croisieres/inde'
+      fullPath: '/croisieres/inde'
+      preLoaderRoute: typeof CroisieresIndeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/croisieres/gourmande': {
+      id: '/croisieres/gourmande'
+      path: '/croisieres/gourmande'
+      fullPath: '/croisieres/gourmande'
+      preLoaderRoute: typeof CroisieresGourmandeRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/croisieres/amerique-du-nord': {
+      id: '/croisieres/amerique-du-nord'
+      path: '/croisieres/amerique-du-nord'
+      fullPath: '/croisieres/amerique-du-nord'
+      preLoaderRoute: typeof CroisieresAmeriqueDuNordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AProposRoute: AProposRoute,
+  ContactRoute: ContactRoute,
+  CroisieresAmeriqueDuNordRoute: CroisieresAmeriqueDuNordRoute,
+  CroisieresGourmandeRoute: CroisieresGourmandeRoute,
+  CroisieresIndeRoute: CroisieresIndeRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
