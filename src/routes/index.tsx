@@ -29,7 +29,7 @@ function Home() {
             <Sparkles className="h-4 w-4" /> 100% écolos · 100% gourmandes
           </span>
           <h1 className="mt-6 max-w-4xl text-5xl leading-[0.95] text-secondary md:text-7xl lg:text-8xl">
-            Venez sur notre <span className="text-primary">beau bateau</span> !!
+            Venez sur notre <span className="text-primary">beau bateau</span> !
           </h1>
           <p className="mt-6 max-w-2xl text-lg font-semibold text-muted-foreground md:text-xl">
             Des croisières déjantées, en famille ou entre amis, de l'Amérique du Nord jusqu'aux rivages de l'Inde. On mange bien, on rit fort, on respecte la mer.
